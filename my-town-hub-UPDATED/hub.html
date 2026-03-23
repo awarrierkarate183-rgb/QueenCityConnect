@@ -40,16 +40,14 @@
 
   <section class="hub-controls">
     <div class="container">
-
       <div class="search-bar">
         <span class="search-icon">&#x2315;</span>
         <input type="text" id="search-input" placeholder="Search by name, category, or keyword..."/>
       </div>
-
       <div class="hub-filter-row">
         <span class="sort-label">Filter by:</span>
-        <select class="hub-select" id="category-select" onchange="onCategorySelect(this.value)">
-          <option value="All">All Categories</option>
+        <select class="hub-select" id="category-select" multiple size="1" onchange="onMultiCategorySelect(this)">
+          <option value="All" selected>All Categories</option>
           <option value="Food">Food</option>
           <option value="Housing">Housing</option>
           <option value="Health">Health</option>
@@ -75,25 +73,7 @@
         </select>
         <button class="filter-btn clear-btn" onclick="clearAllFilters()">Clear All</button>
       </div>
-
-      <p class="hub-filter-hint">Tip: Select multiple categories below to compare resources side by side.</p>
-
-      <div class="filter-bar" id="filter-bar">
-        <button class="filter-btn active" data-category="All">All</button>
-        <button class="filter-btn" data-category="Food">Food</button>
-        <button class="filter-btn" data-category="Housing">Housing</button>
-        <button class="filter-btn" data-category="Health">Health</button>
-        <button class="filter-btn" data-category="Mental Health">Mental Health</button>
-        <button class="filter-btn" data-category="Youth">Youth</button>
-        <button class="filter-btn" data-category="Safety">Safety</button>
-        <button class="filter-btn" data-category="Legal Aid">Legal Aid</button>
-        <button class="filter-btn" data-category="Financial Aid">Financial Aid</button>
-        <button class="filter-btn" data-category="Veterans">Veterans</button>
-        <button class="filter-btn" data-category="Employment">Employment</button>
-        <button class="filter-btn" data-category="Education">Education</button>
-        <button class="filter-btn" data-category="General Support">General Support</button>
-      </div>
-
+      <p class="hub-filter-hint">Hold Ctrl (Windows) or Cmd (Mac) to select multiple categories.</p>
       <div class="hub-toolbar">
         <div class="results-count" id="results-count"></div>
         <div class="view-toggle">
@@ -101,7 +81,6 @@
           <button class="view-btn" id="btn-map" onclick="setView('map')">Map</button>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -168,12 +147,14 @@
   <script src="assets/js/hub.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
-    function onCategorySelect(val) {
+    function onMultiCategorySelect(sel) {
+      const selected = Array.from(sel.selectedOptions).map(o => o.value);
       activeCategories.clear();
-      activeCategories.add(val);
-      document.querySelectorAll('.filter-btn').forEach(b => {
-        b.classList.toggle('active', b.dataset.category === val);
-      });
+      if (selected.includes('All') || selected.length === 0) {
+        activeCategories.add('All');
+      } else {
+        selected.forEach(v => activeCategories.add(v));
+      }
       renderResources();
       if (currentView === 'map') renderMap();
     }
@@ -196,12 +177,10 @@
       sortOrder = 'default';
       searchQuery = '';
       document.getElementById('search-input').value = '';
-      document.getElementById('category-select').value = 'All';
+      const sel = document.getElementById('category-select');
+      Array.from(sel.options).forEach(o => o.selected = o.value === 'All');
       document.getElementById('hours-select').value = 'All';
       document.getElementById('sort-select').value = 'default';
-      document.querySelectorAll('.filter-btn').forEach(b => {
-        b.classList.toggle('active', b.dataset.category === 'All');
-      });
       renderResources();
       if (currentView === 'map') renderMap();
     }

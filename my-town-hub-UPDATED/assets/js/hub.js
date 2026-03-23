@@ -142,11 +142,12 @@ async function loadResources() {
     if (urlCategory) {
       activeCategories.clear();
       activeCategories.add(urlCategory);
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.category === urlCategory);
-      });
       const sel = document.getElementById('category-select');
-      if (sel) sel.value = urlCategory;
+      if (sel) {
+        Array.from(sel.options).forEach(o => {
+          o.selected = o.value === urlCategory;
+        });
+      }
     }
 
     renderResources();
@@ -347,40 +348,6 @@ function printCard(id) {
 // ─── SEARCH ───
 document.getElementById('search-input').addEventListener('input', e => {
   searchQuery = e.target.value.toLowerCase().trim();
-  renderResources();
-  if (currentView === 'map') renderMap();
-});
-
-// ─── MULTI-SELECT FILTER BUTTONS ───
-document.getElementById('filter-bar').addEventListener('click', e => {
-  if (!e.target.classList.contains('filter-btn')) return;
-  const cat = e.target.dataset.category;
-
-  if (cat === 'All') {
-    activeCategories.clear();
-    activeCategories.add('All');
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    e.target.classList.add('active');
-  } else {
-    activeCategories.delete('All');
-    document.querySelector('.filter-btn[data-category="All"]').classList.remove('active');
-
-    if (e.target.classList.contains('active')) {
-      e.target.classList.remove('active');
-      activeCategories.delete(cat);
-      if (activeCategories.size === 0) {
-        activeCategories.add('All');
-        document.querySelector('.filter-btn[data-category="All"]').classList.add('active');
-      }
-    } else {
-      e.target.classList.add('active');
-      activeCategories.add(cat);
-    }
-  }
-
-  const sel = document.getElementById('category-select');
-  if (sel) sel.value = activeCategories.has('All') ? 'All' : [...activeCategories][0];
-
   renderResources();
   if (currentView === 'map') renderMap();
 });

@@ -668,6 +668,7 @@ body.dark .btn-outline-white { color: white; border-color: rgba(255,255,255,0.5)
   position: sticky;
   top: 64px;
   z-index: 90;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 .search-bar {
   display: flex; align-items: center; gap: 10px;
@@ -963,13 +964,31 @@ body.dark .btn-outline-white { color: white; border-color: rgba(255,255,255,0.5)
 .ref-list a { color: var(--accent); font-weight: 500; }
 .ref-list a:hover { text-decoration: underline; }
 .framework-statement {
-  display: flex; gap: 14px; align-items: flex-start;
-  background: var(--accent-bg); border: 1.5px solid #bbf7d0;
-  border-radius: var(--radius); padding: 20px 24px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: transparent;
+  border: 1.5px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 20px 24px;
 }
 .framework-icon { font-size: 20px; flex-shrink: 0; }
-.framework-statement strong { display: block; font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
-.framework-statement p { font-size: 13px; color: #166534; line-height: 1.6; }
+.framework-statement strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.framework-statement p {
+  font-size: 13px;
+  color: var(--ink-3);
+  line-height: 1.6;
+}
+body.dark .framework-statement {
+  border-color: #3d3730;
+  background: transparent;
+}
 
 /* ─── SCROLL ANIMATIONS ─── */
 .fade-up {
@@ -1645,6 +1664,7 @@ body {
   position: sticky;
   top: 64px;
   z-index: 90;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 .hub-filter-row {
   display: flex;
@@ -1663,14 +1683,24 @@ body {
   color: var(--ink-2);
   cursor: pointer;
   transition: border-color 0.2s;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b6b6b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  padding-right: 32px;
   min-width: 160px;
 }
 .hub-select:focus { border-color: var(--accent); outline: none; }
+select[multiple].hub-select {
+  height: auto;
+  min-height: 44px;
+  max-height: 180px;
+  padding: 6px 10px;
+  background-image: none;
+}
+select[multiple].hub-select option {
+  padding: 5px 8px;
+  border-radius: 4px;
+}
+select[multiple].hub-select option:checked {
+  background: var(--accent);
+  color: white;
+}
 body.dark .hub-select {
   background-color: #231f1b;
   border-color: #3d3730;
@@ -1683,6 +1713,23 @@ body.dark .hub-select {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   white-space: nowrap;
+}
+.hub-filter-hint {
+  font-size: 12px;
+  color: var(--ink-3);
+  margin-bottom: 8px;
+  font-style: italic;
+}
+.active-count {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 99px;
+  padding: 1px 7px;
+  margin-left: 6px;
+  vertical-align: middle;
 }
 /* ─── MULTI SELECT FILTER INDICATOR ─── */
 .filter-bar .filter-btn.active {
