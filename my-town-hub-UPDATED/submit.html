@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submit a Resource | QueenCityConnect</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body class="dark">
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Queen<span>City</span>Connect</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hub.html">Resource Hub</a></li>
+        <li><a href="neighborhood.html">Neighborhoods</a></li>
+        <li><a href="submit.html">Submit a Resource</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="references.html">References</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="hub.html" class="nav-cta">Find Resources</a>
+        <button class="dark-toggle" onclick="toggleDark()" id="dark-btn" aria-label="Toggle dark or light mode">&#9728;</button>
+        <button class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-header submit-header">
+    <div class="container">
+      <span class="page-header-eyebrow">Community Powered</span>
+      <h1>Submit a Resource</h1>
+      <p>Know an organization or service that should be listed here? Tell us about it.</p>
+    </div>
+  </section>
+
+  <section class="submit-section">
+    <div class="container">
+      <div class="submit-layout">
+        <div class="form-card">
+          <h2>Resource Submission Form</h2>
+          <p>Fill out the form below and our team will review your submission. Fields marked <span class="required-star">*</span> are required.</p>
+
+          <div id="success-message" class="success-message hidden">
+            <div>
+              <strong>Thank you for your submission!</strong>
+              <p>We'll review your resource and add it to the directory shortly. A copy has been saved in this browser for review.</p>
+              <button class="btn-secondary" style="margin-top:12px" onclick="downloadLastSubmission()">Download Submission Copy</button>
+              <button class="btn-secondary" style="margin-top:12px" onclick="resetForm()">Submit Another Resource</button>
+            </div>
+          </div>
+
+          <div class="form-grid" id="submit-form">
+            <div class="form-section-label full">Organization Information</div>
+            <div class="form-group full">
+              <label>Organization Name <span class="required-star">*</span></label>
+              <input type="text" id="org-name" placeholder="e.g. Charlotte Food Bank"/>
+              <span class="error-msg" id="err-org-name"></span>
+            </div>
+            <div class="form-group">
+              <label>Category <span class="required-star">*</span></label>
+              <select id="org-category">
+                <option value="">Select a category...</option>
+                <option>Food</option>
+                <option>Housing</option>
+                <option>Health</option>
+                <option>Mental Health</option>
+                <option>Youth</option>
+                <option>Safety</option>
+                <option>Legal Aid</option>
+                <option>Financial Aid</option>
+                <option>Veterans</option>
+                <option>Employment</option>
+                <option>Education</option>
+                <option>General Support</option>
+                <option>Other</option>
+              </select>
+              <span class="error-msg" id="err-org-category"></span>
+            </div>
+            <div class="form-group">
+              <label>Phone Number <span class="required-star">*</span></label>
+              <input type="tel" id="org-phone" placeholder="(704) 000-0000"/>
+              <span class="error-msg" id="err-org-phone"></span>
+            </div>
+            <div class="form-group full">
+              <label>Website URL</label>
+              <input type="url" id="org-website" placeholder="https://example.com"/>
+            </div>
+            <div class="form-group full">
+              <label>Street Address</label>
+              <input type="text" id="org-address" placeholder="123 Main St, Charlotte, NC 28202"/>
+            </div>
+            <div class="form-group">
+              <label>Hours of Operation</label>
+              <input type="text" id="org-hours" placeholder="Mon–Fri 9am–5pm"/>
+            </div>
+            <div class="form-group">
+              <label>Service Area</label>
+              <input type="text" id="org-area" placeholder="e.g. All of Mecklenburg County"/>
+            </div>
+            <div class="form-group full">
+              <label>Description <span class="required-star">*</span></label>
+              <textarea id="org-description" rows="4" placeholder="Briefly describe what this organization does and who it serves..."></textarea>
+              <span class="error-msg" id="err-org-description"></span>
+            </div>
+            <div class="form-section-label full" style="margin-top:8px">Your Information</div>
+            <div class="form-group">
+              <label>Your Name <span class="required-star">*</span></label>
+              <input type="text" id="submitter-name" placeholder="Your full name"/>
+              <span class="error-msg" id="err-submitter-name"></span>
+            </div>
+            <div class="form-group">
+              <label>Your Email</label>
+              <input type="email" id="submitter-email" placeholder="you@example.com"/>
+            </div>
+            <div class="form-group full">
+              <label>Your Connection to This Organization</label>
+              <select id="submitter-role">
+                <option value="">Select one...</option>
+                <option>I work or volunteer here</option>
+                <option>I have used this service</option>
+                <option>I'm a community member recommending it</option>
+                <option>I'm a social worker or case manager</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <button class="btn-submit" onclick="submitForm()">Submit Resource</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="submit-sidebar">
+          <div class="submit-info-card">
+            <h3>Why Submit?</h3>
+            <p>Help Charlotte residents find services they may not know exist.</p>
+            <ul class="submit-info-list">
+              <li>We verify every submission before it goes live</li>
+              <li>Listing your organization is completely free</li>
+              <li>Reach thousands of Charlotte residents</li>
+            </ul>
+          </div>
+          <div class="submit-info-card">
+            <h3>Need Immediate Help?</h3>
+            <p>Call <strong>211</strong> anytime for free referrals to local services across Charlotte-Mecklenburg County.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand-name">QueenCityConnect</div>
+          <p class="footer-brand-tagline">Connecting Charlotte-Mecklenburg residents to food, housing, health care, and more.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Directory</h4>
+          <ul>
+            <li><a href="hub.html">All Resources</a></li>
+            <li><a href="hub.html?category=Food">Food</a></li>
+            <li><a href="hub.html?category=Housing">Housing</a></li>
+            <li><a href="hub.html?category=Health">Health</a></li>
+            <li><a href="hub.html?category=Mental%20Health">Mental Health</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>More</h4>
+          <ul>
+            <li><a href="hub.html?category=Legal%20Aid">Legal Aid</a></li>
+            <li><a href="hub.html?category=Veterans">Veterans</a></li>
+            <li><a href="hub.html?category=Youth">Youth</a></li>
+            <li><a href="hub.html?category=Education">Education</a></li>
+            <li><a href="hub.html?category=Employment">Employment</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Project</h4>
+          <ul>
+            <li><a href="neighborhood.html">Neighborhood Guide</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="submit.html">Submit a Resource</a></li>
+            <li><a href="references.html">References</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 QueenCityConnect &mdash; Charlotte, NC</span>
+        <span>TSA Webmaster 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/submit.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

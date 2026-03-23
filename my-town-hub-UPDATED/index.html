@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QueenCityConnect — Charlotte Community Resources</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body class="dark">
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Queen<span>City</span>Connect</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hub.html">Resource Hub</a></li>
+        <li><a href="neighborhood.html">Neighborhoods</a></li>
+        <li><a href="submit.html">Submit a Resource</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="references.html">References</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="hub.html" class="nav-cta">Find Resources</a>
+        <button class="dark-toggle" onclick="toggleDark()" id="dark-btn" aria-label="Toggle dark or light mode">&#9728;</button>
+        <button class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Charlotte Mecklenburg County</p>
+        <h1>Every neighbor deserves <em id="typewriter">support.</em></h1>
+        <p class="hero-lead">A free, community-powered directory connecting Charlotte residents to food, housing, health care, and more all in one place.</p>
+        <div class="hero-actions">
+          <a href="hub.html" class="btn-primary">Browse All Resources</a>
+          <a href="#help-now" class="btn-ghost">Get Help Now</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="assets/images/charlotte.jpg" alt="Charlotte, NC skyline"/>
+        <div class="hero-photo-caption">Charlotte Mecklenburg County, NC</div>
+      </div>
+    </div>
+    <div class="scroll-indicator">&#8595;</div>
+  </section>
+
+  <section class="need-help" id="help-now">
+    <div class="container">
+      <p class="need-help-eyebrow">Get Help Fast</p>
+      <div class="need-help-grid">
+        <a href="hub.html?category=Food" class="need-help-card">
+          <span class="nhc-dot" style="background:#ef4444"></span>
+          <h3>Food Today</h3>
+          <p>Find food pantries and meal programs near you.</p>
+        </a>
+        <a href="hub.html?category=Housing" class="need-help-card">
+          <span class="nhc-dot" style="background:#10b981"></span>
+          <h3>Housing Support</h3>
+          <p>Locate shelter, rental help, and housing programs.</p>
+        </a>
+        <a href="hub.html?category=Mental%20Health" class="need-help-card">
+          <span class="nhc-dot" style="background:#8b5cf6"></span>
+          <h3>Mental Health</h3>
+          <p>Find counseling and crisis response resources.</p>
+        </a>
+        <a href="hub.html?category=General%20Support" class="need-help-card">
+          <span class="nhc-dot" style="background:#64748b"></span>
+          <h3>General Support</h3>
+          <p>Connect with 211 and broad community services.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPOTLIGHT -->
+  <section class="spotlight" id="spotlight">
+    <div class="container">
+      <div class="section-header-row">
+        <div>
+          <span class="section-eyebrow">Featured Organizations</span>
+          <h2 class="section-title">Community Spotlight</h2>
+        </div>
+        <a href="hub.html">View all resources &rarr;</a>
+      </div>
+      <div class="spotlight-grid" id="spotlight-grid"></div>
+    </div>
+  </section>
+
+  <!-- PHOTO BAND -->
+  <section class="photo-band">
+    <div class="photo-band-img" style="background-image:url('https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1400&q=80')"></div>
+    <div class="photo-band-overlay"></div>
+    <div class="photo-band-content container">
+      <p class="photo-band-eyebrow">Why It Matters</p>
+      <h2>Charlotte is growing fast.<br/>Our neighbors need support.</h2>
+      <p>1 in 8 Charlotte residents face food insecurity. 35% are cost-burdened by housing. Over 200,000 lack health insurance. QueenCityConnect exists to connect people to the help that's already here.</p>
+      <a href="about.html" class="btn-white">Learn More About Our Mission</a>
+    </div>
+  </section>
+
+  <!-- PHOTO CATEGORIES -->
+  <section class="photo-categories">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Browse by Type</span>
+        <h2 class="section-title">All Resource Categories</h2>
+        <p class="section-sub">From emergency food to legal aid every category of help available in Charlotte.</p>
+      </div>
+      <div class="photo-cat-grid">
+        <a href="hub.html?category=Food" class="photo-cat-card" style="background-image:url('https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=600&q=80')">
+          <div class="photo-cat-overlay"></div>
+          <div class="photo-cat-content">
+            <span class="photo-cat-count">6 resources</span>
+            <h3>Food Assistance</h3>
+            <p>Food banks, pantries, and meal programs</p>
+          </div>
+        </a>
+        <a href="hub.html?category=Housing" class="photo-cat-card" style="background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80')">
+          <div class="photo-cat-overlay"></div>
+          <div class="photo-cat-content">
+            <span class="photo-cat-count">6 resources</span>
+            <h3>Housing &amp; Shelter</h3>
+            <p>Emergency shelter, rental help, homeownership</p>
+          </div>
+        </a>
+        <a href="hub.html?category=Health" class="photo-cat-card" style="background-image:url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80')">
+          <div class="photo-cat-overlay"></div>
+          <div class="photo-cat-content">
+            <span class="photo-cat-count">6 resources</span>
+            <h3>Healthcare</h3>
+            <p>Free and low-cost medical and dental care</p>
+          </div>
+        </a>
+        <a href="hub.html?category=Mental%20Health" class="photo-cat-card" style="background-image:url('https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&q=80')">
+          <div class="photo-cat-overlay"></div>
+          <div class="photo-cat-content">
+            <span class="photo-cat-count">7 resources</span>
+            <h3>Mental Health</h3>
+            <p>Counseling, support groups, crisis response</p>
+          </div>
+        </a>
+        <a href="hub.html?category=Education" class="photo-cat-card" style="background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80')">
+          <div class="photo-cat-overlay"></div>
+          <div class="photo-cat-content">
+            <span class="photo-cat-count">3 resources</span>
+            <h3>Education</h3>
+            <p>School supplies, tutoring, literacy programs</p>
+          </div>
+        </a>
+        <a href="hub.html?category=Employment" class="photo-cat-card" style="background-image:url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=80')">
+          <div class="photo-cat-overlay"></div>
+          <div class="photo-cat-content">
+            <span class="photo-cat-count">5 resources</span>
+            <h3>Employment</h3>
+            <p>Job training, placement, and career services</p>
+          </div>
+        </a>
+        <a href="hub.html?category=Legal%20Aid" class="photo-cat-card" style="background-image:url('https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=600&q=80')">
+          <div class="photo-cat-overlay"></div>
+          <div class="photo-cat-content">
+            <span class="photo-cat-count">1 resource</span>
+            <h3>Legal Aid</h3>
+            <p>Free civil legal services for low-income residents</p>
+          </div>
+        </a>
+        <a href="hub.html?category=Financial%20Aid" class="photo-cat-card" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80')">
+          <div class="photo-cat-overlay"></div>
+          <div class="photo-cat-content">
+            <span class="photo-cat-count">1 resource</span>
+            <h3>Financial Aid</h3>
+            <p>Emergency funds for rent, utilities, and bills</p>
+          </div>
+        </a>
+        <a href="hub.html?category=Veterans" class="photo-cat-card" style="background-image:url('https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80')">
+          <div class="photo-cat-overlay"></div>
+          <div class="photo-cat-content">
+            <span class="photo-cat-count">4 resources</span>
+            <h3>Veterans</h3>
+            <p>Benefits, housing assistance, and job support</p>
+          </div>
+        </a>
+        <a href="hub.html?category=Youth" class="photo-cat-card" style="background-image:url('https://images.unsplash.com/photo-1529390079861-591de354faf5?w=600&q=80')">
+          <div class="photo-cat-overlay"></div>
+          <div class="photo-cat-content">
+            <span class="photo-cat-count">2 resources</span>
+            <h3>Youth Services</h3>
+            <p>Crisis support and programs for ages 7&ndash;24</p>
+          </div>
+        </a>
+        <a href="hub.html?category=Safety" class="photo-cat-card" style="background-image:url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600&q=80')">
+          <div class="photo-cat-overlay"></div>
+          <div class="photo-cat-content">
+            <span class="photo-cat-count">1 resource</span>
+            <h3>Safety &amp; Crisis</h3>
+            <p>Domestic violence and emergency support</p>
+          </div>
+        </a>
+        <a href="hub.html?category=General%20Support" class="photo-cat-card" style="background-image:url('https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=600&q=80')">
+          <div class="photo-cat-overlay"></div>
+          <div class="photo-cat-content">
+            <span class="photo-cat-count">8 resources</span>
+            <h3>General Support</h3>
+            <p>Broad community programs and 211 helpline</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPDATES -->
+  <section class="updates">
+    <div class="container">
+      <div class="section-header-row">
+        <div>
+          <span class="section-eyebrow">Local News</span>
+          <h2 class="section-title">What&rsquo;s Happening in Charlotte</h2>
+        </div>
+      </div>
+      <div class="updates-grid">
+        <div class="update-main">
+          <div class="update-main-tag">Housing</div>
+          <h3>Charlotte Launches $50M Affordable Housing Initiative for 2026</h3>
+          <p>The City of Charlotte has committed $50 million toward affordable housing development across Mecklenburg County, targeting neighborhoods most impacted by rapid growth and displacement.</p>
+          <div class="update-main-meta">City of Charlotte March 2026</div>
+          <a href="https://charlottenc.gov" target="_blank" class="update-link">Read more at charlottenc.gov</a>
+        </div>
+        <div class="update-list">
+          <div class="update-item">
+            <div class="update-item-tag">Food</div>
+            <h4>Loaves &amp; Fishes Opens New East Charlotte Location</h4>
+            <div class="update-item-meta">Loaves &amp; Fishes February 2026</div>
+          </div>
+          <div class="update-item">
+            <div class="update-item-tag">Mental Health</div>
+            <h4>NAMI Charlotte Expands Free Support Group Offerings</h4>
+            <div class="update-item-meta">NAMI Charlotte January 2026</div>
+          </div>
+          <div class="update-item">
+            <div class="update-item-tag">Employment</div>
+            <h4>Goodwill Opens New Career Center in South Charlotte</h4>
+            <div class="update-item-meta">Goodwill SP January 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS with animated counters -->
+  <section class="stats-strip">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num">1 in 8</div>
+          <div class="stat-label">Charlotte residents face food insecurity</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-count="35" data-suffix="%">0%</div>
+          <div class="stat-label">Of renters are cost-burdened by housing</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-count="200" data-suffix="K+">0K+</div>
+          <div class="stat-label">County residents lack health insurance</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-count="50" data-suffix="+">0+</div>
+          <div class="stat-label">Verified local organizations in this directory</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="map-section">
+    <div class="container">
+      <div class="section-header-row">
+        <div>
+          <span class="section-eyebrow">Geography</span>
+          <h2 class="section-title">Resources Across Charlotte</h2>
+        </div>
+        <a href="hub.html">View directory &rarr;</a>
+      </div>
+      <div class="map-layout">
+        <div id="home-map"></div>
+        <div class="map-legend">
+          <h3>Categories</h3>
+          <div class="legend-item"><span class="legend-dot" style="background:#ef4444"></span>Food</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#3b82f6"></span>Health</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#10b981"></span>Housing</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#8b5cf6"></span>Mental Health</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#f59e0b"></span>Youth</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#ec4899"></span>Safety</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#6366f1"></span>Legal Aid</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#14b8a6"></span>Financial Aid</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#dc2626"></span>Veterans</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#16a34a"></span>Employment</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#7c3aed"></span>Education</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#64748b"></span>General</div>
+          <a href="hub.html" class="btn-primary" style="display:block;text-align:center;margin-top:16px;font-size:13px;padding:9px 16px">Full Directory</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">How QueenCityConnect Works</span>
+        <h2 class="section-title">Three simple steps to get support</h2>
+        <p class="section-sub">A quick workflow designed for residents, families, and case managers.</p>
+      </div>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-step-num">01</div>
+          <div class="how-step-text">
+            <h3>Search and Filter</h3>
+            <p>Use keyword search and category filters to narrow the resource hub to your exact need.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">02</div>
+          <div class="how-step-text">
+            <h3>Review Verified Details</h3>
+            <p>Open resource cards to check phone numbers, addresses, hours, and official organization websites.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">03</div>
+          <div class="how-step-text">
+            <h3>Connect Right Away</h3>
+            <p>Call, visit, or share the resource immediately. Use the submit page to suggest more local resources.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="verification-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Data Quality</span>
+        <h2 class="section-title">How we verify each resource</h2>
+        <p class="section-sub">We use a repeatable checklist so residents can trust the information in this directory.</p>
+      </div>
+      <div class="verification-grid">
+        <div class="verification-item">
+          <h3>Official Source Check</h3>
+          <p>Each listing is cross-checked against an official organization website or county service page before publishing.</p>
+        </div>
+        <div class="verification-item">
+          <h3>Contact Detail Review</h3>
+          <p>We verify address, phone, service category, operating hours, and active website links for every resource card.</p>
+        </div>
+        <div class="verification-item">
+          <h3>Rolling Updates</h3>
+          <p>Community submissions are reviewed before inclusion, and listings are re-audited on a regular cycle for accuracy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="container">
+      <h2>Know a resource we&rsquo;re missing?</h2>
+      <p>Help your neighbors by adding a local organization to the directory. It takes two minutes.</p>
+      <div class="cta-band-actions">
+        <a href="submit.html" class="btn-white">Submit a Resource</a>
+        <a href="about.html" class="btn-outline-white">About This Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand-name">QueenCityConnect</div>
+          <p class="footer-brand-tagline">Connecting Charlotte-Mecklenburg residents to food, housing, health care, and more.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Directory</h4>
+          <ul>
+            <li><a href="hub.html">All Resources</a></li>
+            <li><a href="hub.html?category=Food">Food</a></li>
+            <li><a href="hub.html?category=Housing">Housing</a></li>
+            <li><a href="hub.html?category=Health">Health</a></li>
+            <li><a href="hub.html?category=Mental%20Health">Mental Health</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>More</h4>
+          <ul>
+            <li><a href="hub.html?category=Legal%20Aid">Legal Aid</a></li>
+            <li><a href="hub.html?category=Veterans">Veterans</a></li>
+            <li><a href="hub.html?category=Youth">Youth</a></li>
+            <li><a href="hub.html?category=Education">Education</a></li>
+            <li><a href="hub.html?category=Employment">Employment</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Project</h4>
+          <ul>
+            <li><a href="neighborhood.html">Neighborhood Guide</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="submit.html">Submit a Resource</a></li>
+            <li><a href="references.html">References</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 QueenCityConnect Charlotte, NC</span>
+        <span>TSA Webmaster 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

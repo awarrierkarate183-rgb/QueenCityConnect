@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resource Hub | QueenCityConnect</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body class="dark">
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Queen<span>City</span>Connect</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="hub.html">Resource Hub</a></li>
+        <li><a href="neighborhood.html">Neighborhoods</a></li>
+        <li><a href="submit.html">Submit a Resource</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="references.html">References</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="hub.html" class="nav-cta">Find Resources</a>
+        <button class="dark-toggle" onclick="toggleDark()" id="dark-btn" aria-label="Toggle dark or light mode">&#9728;</button>
+        <button class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-header hub-header">
+    <div class="container">
+      <span class="page-header-eyebrow">Charlotte-Mecklenburg County</span>
+      <h1>Charlotte Resource Directory</h1>
+      <p>Browse, search, and filter 50+ verified resources available to Charlotte-Mecklenburg residents.</p>
+    </div>
+  </section>
+
+  <section class="hub-controls">
+    <div class="container">
+
+      <div class="search-bar">
+        <span class="search-icon">&#x2315;</span>
+        <input type="text" id="search-input" placeholder="Search by name, category, or keyword..."/>
+      </div>
+
+      <div class="hub-filter-row">
+        <span class="sort-label">Filter by:</span>
+        <select class="hub-select" id="category-select" onchange="onCategorySelect(this.value)">
+          <option value="All">All Categories</option>
+          <option value="Food">Food</option>
+          <option value="Housing">Housing</option>
+          <option value="Health">Health</option>
+          <option value="Mental Health">Mental Health</option>
+          <option value="Youth">Youth</option>
+          <option value="Safety">Safety</option>
+          <option value="Legal Aid">Legal Aid</option>
+          <option value="Financial Aid">Financial Aid</option>
+          <option value="Veterans">Veterans</option>
+          <option value="Employment">Employment</option>
+          <option value="Education">Education</option>
+          <option value="General Support">General Support</option>
+        </select>
+        <select class="hub-select" id="hours-select" onchange="onHoursSelect(this.value)">
+          <option value="All">All Hours</option>
+          <option value="24/7">24/7 Services</option>
+          <option value="Weekday">Weekday Only</option>
+        </select>
+        <select class="hub-select" id="sort-select" onchange="onSortSelect(this.value)">
+          <option value="default">Sort: Default</option>
+          <option value="az">Sort: A to Z</option>
+          <option value="za">Sort: Z to A</option>
+        </select>
+        <button class="filter-btn clear-btn" onclick="clearAllFilters()">Clear All</button>
+      </div>
+
+      <p class="hub-filter-hint">Tip: Select multiple categories below to compare resources side by side.</p>
+
+      <div class="filter-bar" id="filter-bar">
+        <button class="filter-btn active" data-category="All">All</button>
+        <button class="filter-btn" data-category="Food">Food</button>
+        <button class="filter-btn" data-category="Housing">Housing</button>
+        <button class="filter-btn" data-category="Health">Health</button>
+        <button class="filter-btn" data-category="Mental Health">Mental Health</button>
+        <button class="filter-btn" data-category="Youth">Youth</button>
+        <button class="filter-btn" data-category="Safety">Safety</button>
+        <button class="filter-btn" data-category="Legal Aid">Legal Aid</button>
+        <button class="filter-btn" data-category="Financial Aid">Financial Aid</button>
+        <button class="filter-btn" data-category="Veterans">Veterans</button>
+        <button class="filter-btn" data-category="Employment">Employment</button>
+        <button class="filter-btn" data-category="Education">Education</button>
+        <button class="filter-btn" data-category="General Support">General Support</button>
+      </div>
+
+      <div class="hub-toolbar">
+        <div class="results-count" id="results-count"></div>
+        <div class="view-toggle">
+          <button class="view-btn active" id="btn-list" onclick="setView('list')">List</button>
+          <button class="view-btn" id="btn-map" onclick="setView('map')">Map</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="hub-grid-section">
+    <div class="container">
+      <div id="list-view">
+        <div class="resource-grid" id="resource-grid"></div>
+        <div class="no-results hidden" id="no-results">
+          <p>No resources found matching your search.</p>
+          <button class="btn-secondary" onclick="clearAllFilters()">Clear Filters</button>
+        </div>
+      </div>
+      <div id="map-view" class="hidden">
+        <div id="map"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand-name">QueenCityConnect</div>
+          <p class="footer-brand-tagline">Connecting Charlotte-Mecklenburg residents to food, housing, health care, and more.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Directory</h4>
+          <ul>
+            <li><a href="hub.html">All Resources</a></li>
+            <li><a href="hub.html?category=Food">Food</a></li>
+            <li><a href="hub.html?category=Housing">Housing</a></li>
+            <li><a href="hub.html?category=Health">Health</a></li>
+            <li><a href="hub.html?category=Mental%20Health">Mental Health</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>More</h4>
+          <ul>
+            <li><a href="hub.html?category=Legal%20Aid">Legal Aid</a></li>
+            <li><a href="hub.html?category=Veterans">Veterans</a></li>
+            <li><a href="hub.html?category=Youth">Youth</a></li>
+            <li><a href="hub.html?category=Education">Education</a></li>
+            <li><a href="hub.html?category=Employment">Employment</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Project</h4>
+          <ul>
+            <li><a href="neighborhood.html">Neighborhood Guide</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="submit.html">Submit a Resource</a></li>
+            <li><a href="references.html">References</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 QueenCityConnect, Charlotte, NC</span>
+        <span>TSA Webmaster 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="assets/js/hub.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    function onCategorySelect(val) {
+      activeCategories.clear();
+      activeCategories.add(val);
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.category === val);
+      });
+      renderResources();
+      if (currentView === 'map') renderMap();
+    }
+
+    function onHoursSelect(val) {
+      hoursFilter = val;
+      renderResources();
+      if (currentView === 'map') renderMap();
+    }
+
+    function onSortSelect(val) {
+      sortOrder = val;
+      renderResources();
+    }
+
+    function clearAllFilters() {
+      activeCategories.clear();
+      activeCategories.add('All');
+      hoursFilter = 'All';
+      sortOrder = 'default';
+      searchQuery = '';
+      document.getElementById('search-input').value = '';
+      document.getElementById('category-select').value = 'All';
+      document.getElementById('hours-select').value = 'All';
+      document.getElementById('sort-select').value = 'default';
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.category === 'All');
+      });
+      renderResources();
+      if (currentView === 'map') renderMap();
+    }
+  </script>
+</body>
+</html>
